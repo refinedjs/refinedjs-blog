@@ -1,0 +1,19 @@
+# Dependency directory
+node_modules
+
+public/bundle.js
+
+*.DS_Store
+
+package-lock.json
+
+yarn-error.log
+
+# Ignore .env
+.env
+
+# Ignore coverage
+coverage
+
+# Ignore Test Reports
+reports

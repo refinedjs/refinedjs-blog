@@ -1,0 +1,45 @@
+.site-name {
+  margin-left: 60px;
+  margin-right: 60px;
+  margin-top: 50px;
+}
+
+.hover-bold:hover{
+  font-weight: bold;
+}
+
+.site-name-icon {
+  color: #990000;
+}
+
+/*iPhone 6*/
+@media (max-width: 375px) {
+  .site-name {
+    margin-left: 25px;
+    font-size: 30px;
+  }
+}
+
+/*Responsive*/
+@media (min-width: 400px) {
+  .site-name {
+    margin-left: 40px;
+    font-size: 30px;
+  }
+}
+
+/*iPhone 6 Plus*/
+@media (min-width: 414px) {
+  .site-name {
+    margin-left: 40px;
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .site-name {
+    margin-left: 80px;
+    margin-top: 50px;
+    font-size: 36px;
+  }
+}

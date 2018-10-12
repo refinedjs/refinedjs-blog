@@ -147,7 +147,7 @@ module.exports = {
 		}],
 
 		// disallow use of multiline strings
-		'no-multi-str': 'error',
+		'no-multi-str': 'warn',
 
 		// disallow use of new operator when not part of the assignment or comparison
 		'no-new': 'error',

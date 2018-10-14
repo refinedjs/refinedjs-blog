@@ -22,7 +22,8 @@ class Post extends Component {
       postBody: singlePostBody
     };*/
     this.state = {
-      post: props.post
+      post: props.post,
+      postBodyClasses: 'post-body col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1'
     };
 
     this.createPostBody = this.createPostBody.bind(this);
@@ -42,7 +43,11 @@ class Post extends Component {
           <div className='post-author'>{this.state.post.postAuthor}</div> | <div className='post-date'>{this.state.post.postDate}</div>
         </div>
         <div className='post-tags'>{this.state.post.postTags}</div>
-        <div className='post-body' dangerouslySetInnerHTML={this.props.snippet ? this.createPostBody(this.state.post.postSnippet) : this.createPostBody(this.state.post.postBody)} />
+        <div className='container-fluid'>
+          <div className='row'>
+            <div className={this.state.postBodyClasses} dangerouslySetInnerHTML={this.props.snippet ? this.createPostBody(this.state.post.postSnippet) : this.createPostBody(this.state.post.postBody)} />
+          </div>
+        </div>
       </div>
     );
   }

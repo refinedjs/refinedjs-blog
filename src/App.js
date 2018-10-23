@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { ActionCreators } from './actions';
 
 import Home from './components/home/Home';
+import Nav from './components/nav/Nav';
 import Post from './components/post/Post';
 
 import './assets/app.scss';
@@ -21,7 +22,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div className="site-name">{this.state.siteName}</div>
+        {/*<div className="site-name">{this.state.siteName}</div>*/}
+        <Nav />
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />

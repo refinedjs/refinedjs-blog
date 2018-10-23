@@ -23,12 +23,12 @@ class Nav extends Component {
         <nav className={this.state.navClasses}>
           <div className='container-fluid'>
             <div className='navbar-header page-scroll'>
-              <button className='navbar-toggle' type='button' data-target='main-nav' data-toggle='collapse'>
+              {/*<button className='navbar-toggle' type='button' data-target='main-nav' data-toggle='collapse'>
                 <span className='sr-only'>Toggle navigation</span>
                 <span className='icon-bar' />
                 <span className='icon-bar' />
                 <span className='icon-bar' />
-              </button>
+              </button>*/}
               <a className='navbar-brand' href='/'>
                 <img className='logo' src={siteLogo} alt='RefinedJS' />
               </a>

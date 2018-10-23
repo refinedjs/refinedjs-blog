@@ -5,11 +5,6 @@ import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';
 
 import PostPreview from '../post/PostPreview';
-import validatorsPostBody from '../post/post_data/angular_validators.html';
-import bindPostBody from '../post/post_data/bind_to_controller.html';
-import deepPostBody from '../post/post_data/deep_copy_objects.html';
-import sourcePostBody from '../post/post_data/read_the_source_code.html';
-
 
 import './home.scss';
 
@@ -28,8 +23,7 @@ class Home extends Component {
           postSnippet: 'The most common way to validate form fields in angular is to look at <code>$valid</code> and <code>$invalid</code> \
             on the fields. But what if that is not enough and you want to create special validation for your fields (i.e. validating an email \
             against a regex or make a call to the server to validate a value)? <code>NgModelController</code> has collection of validators called \
-            <code>$validators</code> and <code>$asyncValidators</code> that can be used to create your custom field validations...',
-          postBody: validatorsPostBody
+            <code>$validators</code> and <code>$asyncValidators</code> that can be used to create your custom field validations...'
         },
         {
           id: '009wer9wer8akjhsdf',
@@ -39,8 +33,7 @@ class Home extends Component {
           postTags: 'AngularJS | Components | Directives | Javascript',
           postSnippet: '<code>BindToController</code> allows you to bind the components properties directly to <code>Controller</code> \
             rather than the <code>isolated $scope</code> of the component. This is a huge win for component development! The controller \
-            of the component now has the ability to be decoupled...',
-          postBody: bindPostBody
+            of the component now has the ability to be decoupled...'
         },
         {
           id: '009wer9wer8akjhssd',
@@ -50,8 +43,7 @@ class Home extends Component {
           postTags: 'AngularJS | Objects | Functions | Javascript',
           postSnippet: 'With jQuery, we learned to copy objects using <code>jQuery.extend()</code>. What if we want to do this in Angular, \
             in which using jQuery should be avoided? Angular has a function that can be used, like <code>jQuery.extend()</code>, \
-            called <code>angular.extend()</code>. But that just scratches the surface...',
-          postBody: deepPostBody
+            called <code>angular.extend()</code>. But that just scratches the surface...'
         },
         {
           id: '009wer9wer8akscvt',
@@ -61,8 +53,7 @@ class Home extends Component {
           postTags: 'AngularJS | React | Coding | Javascript',
           postSnippet: 'A lot of people use open source libraries without understanding the nuts and bolts. On the surface this may seem fine. \
             You read its description, it says it will do what you need so you give integrating it into your project a shot. It does not work. \
-            Read the source code...',
-          postBody: sourcePostBody
+            Read the source code...'
         }
       ]
     };
@@ -76,18 +67,6 @@ class Home extends Component {
     history.push({ pathname: postPath });
   }
 
-  /*render() {
-    return (
-      <div className="home">
-        {this.state.posts.map((post) => {
-          return (
-            <PostPreview key={post.id} post={post} />
-          );
-        })}
-      </div>
-    );
-  }*/
-
   render() {
     return (
       <div className='home'>
@@ -98,7 +77,7 @@ class Home extends Component {
               key={post.id}
               render={({ history }) => {
                 return (
-                  <div className='post-list-preview' onClick={() => { this.onPostClick(post, history); }}>
+                  <div className='post-preview-item' onClick={() => { this.onPostClick(post, history); }}>
                     <PostPreview post={post} />
                   </div>
                 );

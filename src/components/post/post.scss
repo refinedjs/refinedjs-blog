@@ -1,0 +1,19 @@
+.post-container {
+  padding-left: 80px;
+  padding-right: 80px;
+  margin-top: 100px;
+
+  .intro-header {
+    .container-fluid {
+      .row {
+        justify-content: center;
+      }
+    }
+  }
+
+  .container-fluid.post {
+    .row {
+      justify-content: center;
+    }
+  }
+}

@@ -21,7 +21,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1 className="site-name">{this.state.siteName}</h1>
+        <div className="site-name">{this.state.siteName}</div>
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />

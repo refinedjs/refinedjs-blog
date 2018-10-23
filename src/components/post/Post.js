@@ -4,14 +4,14 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';
 
-//import validatorsPostBody from './post_data/angular_validators.html';
-//import bindPostBody from './post_data/bind_to_controller.html';
-//import deepPostBody from './post_data/deep_copy_objects.html';
-//import sourcePostBody from './post_data/read_the_source_code.html';
+import validatorsPostBody from './post_data/angular_validators';
+import bindPostBody from './post_data/bind_to_controller';
+import deepPostBody from './post_data/deep_copy_objects';
+import sourcePostBody from './post_data/read_the_source_code';
 
 import './post.scss';
 
-/*const posts = [
+const posts = [
   {
     id: '009wer9wer8akjhsda',
     postTitle: 'Using NgModelController $validators and $asyncValidators to validate form fields',
@@ -57,43 +57,44 @@ import './post.scss';
       Read the source code...',
     postBody: sourcePostBody
   }
-];*/
+];
 
 class Post extends Component {
   constructor(props) {
     super(props);
 
-    /*const postObj = posts.find((post) => {
+    const postObj = posts.find((post) => {
       return post.id === props.match.params.id; //eslint-disable-line react/prop-types
-    });*/
+    });
 
-    this.postColumnClasses = 'col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1';
-    /*this.state = {
+    this.postColumnClasses = 'col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-1';
+    this.state = {
       post: postObj || {},
       postBodyClasses: ('post-body ' + this.postColumnClasses)
-    };*/
+    };
 
     this.createPostBody = this.createPostBody.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
-    /*const postObj = posts.find((post) => {
+    const postObj = posts.find((post) => {
       return post.id === nextProps.match.params.id; //eslint-disable-line react/prop-types
     });
 
-    this.setState({ post: postObj });*/
+    this.setState({ post: postObj });
   }
 
   createPostBody(text) { //eslint-disable-line class-methods-use-this
+    console.log(text());
     return {
-      __html: text
+      __html: text()
     };
   }
 
   render() {
     return (
-      <div className='post'>
-        {/*<header className='intro-header post'>
+      <div className='post-container'>
+        <header className='intro-header post'>
           <div className='container-fluid'>
             <div className='row'>
               <div className={this.postColumnClasses}>
@@ -115,9 +116,9 @@ class Post extends Component {
         </header>
         <div className='container-fluid post'>
           <div className='row'>
-            {<div className={this.state.postBodyClasses} dangerouslySetInnerHTML={this.createPostBody(this.state.post.postBody)} />}
+            <div className={this.state.postBodyClasses}>{this.state.post.postBody()}</div>
           </div>
-        </div>*/}
+        </div>
       </div>
     );
   }

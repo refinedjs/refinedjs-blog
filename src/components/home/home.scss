@@ -1,5 +1,15 @@
 .home {
   padding-left: 80px;
-  padding-right: 15px;
+  padding-right: 80px;
   margin-top: 100px;
+
+  .post-preview-item {
+    padding: 25px 0px;
+
+    .container-fluid {
+      .row {
+        justify-content: center;
+      }
+    }
+  }
 }

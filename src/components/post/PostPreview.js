@@ -12,7 +12,7 @@ class PostPreview extends Component {
 
     this.state = {
       post: props.post,
-      postPreviewClasses: 'col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1'
+      postPreviewClasses: 'col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-1'
     };
 
     this.createPostPreview = this.createPostPreview.bind(this);
@@ -38,8 +38,8 @@ class PostPreview extends Component {
                 <i className='fa fa-tags' /> {this.state.post.postTags}
               </p>
               <p className='post-meta-details'>
-                <i className='fa fa-comments' /> | <a href='http://refinedjs.io/posts/4-11-2017/read-the-source-code#disqus_thread'></a>
-                <a href=''><span>read more...</span></a>
+                {/*<i className='fa fa-comments' /> | <a href='http://refinedjs.io/posts/4-11-2017/read-the-source-code#disqus_thread'>Comments</a>*/}
+                <a href=''><span>Read more...</span></a>
               </p>
             </div>
           </div>

@@ -9,6 +9,7 @@ import Nav from './components/nav/Nav';
 import Post from './components/post/Post';
 import Why from './components/why/Why';
 import Contributors from './components/contributors/Contributors';
+import Footer from './components/footer/Footer';
 
 import './assets/app.scss';
 
@@ -32,6 +33,7 @@ class App extends Component {
             <Route path="/contributors" component={Contributors} />
           </Switch>
         </Router>
+        <Footer />
       </div>
     );
   }

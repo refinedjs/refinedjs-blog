@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 import PageHeader from '../pageHeader/PageHeader';
 
@@ -22,7 +21,7 @@ export default class Why extends Component {
           <div className='row'>
             <div className={this.state.bodyClasses}>
               <p>
-                We realized that there is a lot of information out there. A lot of information. But it's hidden and it can take days of searching
+                We realized that there is a lot of information out there. A lot of information. But it&apos;s hidden and it can take days of searching
                 to find solutions to a problem. Or an aggregation of data to come up with a solution to a problem.
               </p>
               <p>

@@ -7,16 +7,16 @@ module.exports = {
 
     // Application
     {
-      name      : 'refinedjs-app',
+      name      : 'refinedjs',
       script    : './server.js',
       env: {
-        NODE_ENV: 'development'
+        NODE_ENV: 'dev'
       },
       env_staging: {
-        NODE_ENV: 'staging'
+        NODE_ENV: 'stage'
       },
       env_production : {
-        NODE_ENV: 'production'
+        NODE_ENV: 'prod'
       }
     }
   ]

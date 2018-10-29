@@ -7,6 +7,8 @@ import { ActionCreators } from './actions';
 import Home from './components/home/Home';
 import Nav from './components/nav/Nav';
 import Post from './components/post/Post';
+import Why from './components/why/Why';
+import Contributors from './components/contributors/Contributors';
 
 import './assets/app.scss';
 
@@ -15,19 +17,19 @@ class App extends Component {
     super(props);
 
     this.state = {
-      siteName: 'RefinedJS'
     };
   }
 
   render() {
     return (
       <div>
-        {/*<div className="site-name">{this.state.siteName}</div>*/}
         <Nav />
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/post/:id" component={Post} />
+            <Route path="/why" component={Why} />
+            <Route path="/contributors" component={Contributors} />
           </Switch>
         </Router>
       </div>

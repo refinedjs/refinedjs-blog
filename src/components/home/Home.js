@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { ActionCreators } from '../../actions';
 
 import PostPreview from '../post/PostPreview';
+import PageHeader from '../pageHeader/PageHeader';
 
 import './home.scss';
 
@@ -70,6 +71,7 @@ class Home extends Component {
   render() {
     return (
       <div className='home'>
+        <PageHeader heading='Refined Js' subHeading='The Pursuit To Refined Javascript' />
         {this.state.posts.map((post) => {
           /* eslint-disable jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events */
           return (

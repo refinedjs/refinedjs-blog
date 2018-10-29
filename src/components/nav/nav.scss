@@ -1,0 +1,25 @@
+.nav {
+  .navbar {
+    .container-fluid {
+      display: flex;
+      justify-content: space-betwwen;
+      aligh-items: center;
+
+      .navbar-collapse {
+        flex-basis: 0%;
+      }
+
+      .navbar-nav {
+        flex-direction: row;
+      }
+
+      .navbar-nav.navbar-right {
+        float: right;
+
+        a:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

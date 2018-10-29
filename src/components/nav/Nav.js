@@ -33,7 +33,7 @@ class Nav extends Component {
                 <img className='logo' src={siteLogo} alt='RefinedJS' />
               </a>
             </div>
-            <div id='main-nav' className='collapse navbar-collapse'>
+            <div id='main-nav' className='navbar-collapse'>
               <ul className='nav navbar-nav navbar-right'>
                 <li>
                   <a href='/why'>Why</a>

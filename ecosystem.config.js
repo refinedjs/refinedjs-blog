@@ -7,7 +7,7 @@ module.exports = {
 
     // Application
     {
-      name      : 'refinedjs-app',
+      name      : 'refinedjs',
       script    : './server.js',
       env: {
         NODE_ENV: 'development',

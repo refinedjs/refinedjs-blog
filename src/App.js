@@ -11,6 +11,8 @@ import Why from './components/why/Why';
 import Contributors from './components/contributors/Contributors';
 import Footer from './components/footer/Footer';
 
+import ContentManagement from './components/contentManagement/ContentManagement';
+
 import './assets/app.scss';
 
 class App extends Component {
@@ -31,6 +33,7 @@ class App extends Component {
             <Route path="/post/:id" component={Post} />
             <Route path="/why" component={Why} />
             <Route path="/contributors" component={Contributors} />
+            <Route exact path="/admin" component={ContentManagement}
           </Switch>
         </Router>
         <Footer />

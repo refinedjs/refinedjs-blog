@@ -4,6 +4,8 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const pathUtils = require('./utils/path-utils');
+const db = require('./db');
 
 const isDevEnv = process.env.NODE_ENV !== 'prod';
 
@@ -16,16 +18,28 @@ const isDevEnv = process.env.NODE_ENV !== 'prod';
  */
 function initMiddleware(app) {
   // Showing stack errors
-  app.set("showStackError", true);
+  app.set('showStackError', true);
   // Enable jsonp
-  app.enable("jsonp callback");
+  app.enable('jsonp callback');
 
   app.use(bodyParser.urlencoded({
-      extended: true
+    extended: true
   }));
   app.use(bodyParser.json());
 
   app.use(express.static(path.join(__dirname, '../public')));
+}
+
+/**
+ * Initialize database.
+ *
+ * @method initDatabase
+ * @param {Object} app The express application
+ * @private
+ */
+
+function initDatabase(app) {
+  db(app);
 }
 
 /**
@@ -38,11 +52,12 @@ function initMiddleware(app) {
 
 function initRoutes(app) {
   // Globbing routing files
-  //pathUtils.getGlobbedPaths(path.join(__dirname, "../routes/**/*.routes.js")).forEach(function(routePath) {
-  //  require(path.resolve(routePath))(app);
-  //});
+  pathUtils.getGlobbedPaths(path.join(__dirname, '../server/routes/**/*.routes.js')).forEach((routePath) => {
+    require(path.resolve(routePath))(app);
+  });
 
-  require('../routes/app.routes.js')(app);
+  //require('../server/routes/app.routes.js')(app);
+  //require('../server/routes/api.routes.js')(app);
 }
 
 /**
@@ -56,6 +71,7 @@ function init() {
   const app = express();
   // Initialize Express middleware
   initMiddleware(app);
+  initDatabase(app);
   initRoutes(app);
   return app;
 }

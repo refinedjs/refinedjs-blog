@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import PageHeader from '../pageHeader/PageHeader';
-
 import './footer.scss';
 
 export default class Footer extends Component {

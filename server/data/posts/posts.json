@@ -1,6 +1,7 @@
 [
   {
     "id": "009wer9wer8akscvt",
+    "postStatus": "published",
     "postTitle": "Read the source code",
     "postAuthor": "Yakira Bristol",
     "postDate": "4.11.2017",
@@ -10,6 +11,7 @@
   },
   {
     "id": "009wer9wer8akjhssd",
+    "postStatus": "published",
     "postTitle": "In too deep? - Deep copying objects in Angular",
     "postAuthor": "Yakira Bristol",
     "postDate": "6.4.2016",
@@ -19,6 +21,7 @@
   },
   {
     "id": "009wer9wer8akjhsdf",
+    "postStatus": "published",
     "postTitle": "BindToController - Why is this so damn useful?",
     "postAuthor": "Josh Gonzalez",
     "postDate": "5.20.2016",
@@ -28,6 +31,7 @@
   },
   {
     "id": "009wer9wer8akjhsda",
+    "postStatus": "published",
     "postTitle": "Using NgModelController $validators and $asyncValidators to validate form fields",
     "postAuthor": "Yakira Bristol",
     "postDate": "4.30.2016",

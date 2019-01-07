@@ -87,7 +87,7 @@ class Home extends Component {
               render={({ history }) => {
                 this.history = history;
                 return (
-                  <PostPreview post={post} onTitleClicked={this.onPostClick} onAuthorClicked={this.onAuthorClicked}/>
+                  <PostPreview post={post} onTitleClicked={this.onPostClick} onAuthorClicked={this.onAuthorClicked} />
                 );
               }}
             />

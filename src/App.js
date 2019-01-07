@@ -28,7 +28,6 @@ class App extends Component {
     return (
       <div>
         <Nav />
-        {/*<PageHeader heading='Refined Js' subHeading='The Pursuit To Refined Javascript' />*/}
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />

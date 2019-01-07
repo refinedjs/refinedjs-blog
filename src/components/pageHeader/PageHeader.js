@@ -8,27 +8,25 @@ export default class PageHeader extends Component {
     super(props);
 
     this.state = {
-      headerClasses: 'col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-1'
+      headerClasses: 'col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1'
     };
   }
 
   render() {
     return (
-      <div className='page-header'>
-        <header className='intro-header'>
-          <div className='container-fluid'>
-            <div className='row'>
-              <div className={this.state.headerClasses}>
-                <div className='site-heading'>
-                  <h1>{this.props.heading}</h1>
-                  <hr className='small' />
-                  <span className='subheading'>{this.props.subHeading}</span>
-                </div>
+      <header className='intro-header'>
+        <div className='container-fluid'>
+          <div className='row'>
+            <div className={this.state.headerClasses}>
+              <div className='site-heading'>
+                <h1>{this.props.heading}</h1>
+                <hr className='small' />
+                <span className='subheading'>{this.props.subHeading}</span>
               </div>
             </div>
           </div>
-        </header>
-      </div>
+        </div>
+      </header>
     );
   }
 }

@@ -19,33 +19,31 @@ class Nav extends Component {
 
   render() {
     return (
-      <div className='nav'>
-        <nav className={this.state.navClasses}>
-          <div className='container-fluid'>
-            <div className='navbar-header page-scroll'>
-              {/*<button className='navbar-toggle' type='button' data-target='main-nav' data-toggle='collapse'>
-                <span className='sr-only'>Toggle navigation</span>
-                <span className='icon-bar' />
-                <span className='icon-bar' />
-                <span className='icon-bar' />
-              </button>*/}
-              <a className='navbar-brand' href='/'>
-                <img className='logo' src={siteLogo} alt='RefinedJS' />
-              </a>
-            </div>
-            <div id='main-nav' className='navbar-collapse'>
-              <ul className='nav navbar-nav navbar-right'>
-                <li>
-                  <a href='/why'>Why</a>
-                </li>
-                <li>
-                  <a href='/contributors'>Contributors</a>
-                </li>
-              </ul>
-            </div>
+      <nav className={this.state.navClasses}>
+        <div className='container-fluid'>
+          <div className='navbar-header page-scroll'>
+            <button className='navbar-toggle' type='button' data-target='#main-nav' data-toggle='collapse'>
+              <span className='sr-only'>Toggle navigation</span>
+              <span className='icon-bar' />
+              <span className='icon-bar' />
+              <span className='icon-bar' />
+            </button>
+            <a className='navbar-brand' href='/'>
+              <img className='logo' src={siteLogo} alt='RefinedJS' />
+            </a>
           </div>
-        </nav>
-      </div>
+          <div id='main-nav' className='collapse navbar-collapse'>
+            <ul className='nav navbar-nav navbar-right'>
+              <li>
+                <a href='/why'>Why</a>
+              </li>
+              <li>
+                <a href='/contributors'>Contributors</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     );
   }
 }

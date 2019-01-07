@@ -6,6 +6,7 @@ import { ActionCreators } from './actions';
 
 import Home from './components/home/Home';
 import Nav from './components/nav/Nav';
+import PageHeader from './components/pageHeader/PageHeader';
 import Post from './components/post/Post';
 import Why from './components/why/Why';
 import Contributors from './components/contributors/Contributors';
@@ -27,13 +28,14 @@ class App extends Component {
     return (
       <div>
         <Nav />
+        {/*<PageHeader heading='Refined Js' subHeading='The Pursuit To Refined Javascript' />*/}
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/post/:id" component={Post} />
             <Route path="/why" component={Why} />
             <Route path="/contributors" component={Contributors} />
-            <Route exact path="/admin" component={ContentManagement}
+            <Route exact path="/admin" component={ContentManagement} />
           </Switch>
         </Router>
         <Footer />

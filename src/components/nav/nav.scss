@@ -1,24 +1,22 @@
-.nav {
-  .navbar {
-    .container-fluid {
-      display: flex;
-      justify-content: space-betwwen;
-      aligh-items: center;
-
-      .navbar-collapse {
-        flex-basis: 0%;
+.navbar {
+  .container-fluid {
+    .navbar-header {
+      .navbar-toggle {
+        margin-top: 25px;
       }
+    }
 
-      .navbar-nav {
-        flex-direction: row;
-      }
+    .navbar-collapse {
+      flex-basis: 0%;
+    }
 
-      .navbar-nav.navbar-right {
-        float: right;
+    .navbar-nav {
+      flex-direction: row;
+    }
 
-        a:hover {
-          text-decoration: none;
-        }
+    .navbar-nav.navbar-right {
+      a:hover {
+        text-decoration: none;
       }
     }
   }

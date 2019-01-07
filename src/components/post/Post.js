@@ -13,27 +13,15 @@ import './post.scss';
 
 const posts = [
   {
-    id: '009wer9wer8akjhsda',
-    postTitle: 'Using NgModelController $validators and $asyncValidators to validate form fields',
+    id: '009wer9wer8akscvt',
+    postTitle: 'Read the source code',
     postAuthor: 'Yakira Bristol',
-    postDate: '4.30.2016',
-    postTags: 'AngularJS | Validation | Javascript',
-    postSnippet: 'The most common way to validate form fields in angular is to look at <code>$valid</code> and <code>$invalid</code> \
-      on the fields. But what if that is not enough and you want to create special validation for your fields (i.e. validating an email \
-      against a regex or make a call to the server to validate a value)? <code>NgModelController</code> has collection of validators called \
-      <code>$validators</code> and <code>$asyncValidators</code> that can be used to create your custom field validations...',
-    postBody: validatorsPostBody
-  },
-  {
-    id: '009wer9wer8akjhsdf',
-    postTitle: 'Using BindToController - Why is this so damn useful?',
-    postAuthor: 'Josh Gonzalez',
-    postDate: '5.20.2016',
-    postTags: 'AngularJS | Components | Directives | Javascript',
-    postSnippet: '<code>BindToController</code> allows you to bind the components properties directly to <code>Controller</code> \
-      rather than the <code>isolated $scope</code> of the component. This is a huge win for component development! The controller \
-      of the component now has the ability to be decoupled...',
-    postBody: bindPostBody
+    postDate: '4.11.2017',
+    postTags: 'AngularJS | React | Coding | Javascript',
+    postSnippet: 'A lot of people use open source libraries without understanding the nuts and bolts. On the surface this may seem fine. \
+      You read its description, it says it will do what you need so you give integrating it into your project a shot. It does not work. \
+      Read the source code...',
+    postBody: sourcePostBody
   },
   {
     id: '009wer9wer8akjhssd',
@@ -47,15 +35,27 @@ const posts = [
     postBody: deepPostBody
   },
   {
-    id: '009wer9wer8akscvt',
-    postTitle: 'Read the source code',
+    id: '009wer9wer8akjhsdf',
+    postTitle: 'BindToController - Why is this so damn useful?',
+    postAuthor: 'Josh Gonzalez',
+    postDate: '5.20.2016',
+    postTags: 'AngularJS | Components | Directives | Javascript',
+    postSnippet: '<code>BindToController</code> allows you to bind the components properties directly to <code>Controller</code> \
+      rather than the <code>isolated $scope</code> of the component. This is a huge win for component development! The controller \
+      of the component now has the ability to be decoupled...',
+    postBody: bindPostBody
+  },
+  {
+    id: '009wer9wer8akjhsda',
+    postTitle: 'Using NgModelController $validators and $asyncValidators to validate form fields',
     postAuthor: 'Yakira Bristol',
-    postDate: '4.11.2017',
-    postTags: 'AngularJS | React | Coding | Javascript',
-    postSnippet: 'A lot of people use open source libraries without understanding the nuts and bolts. On the surface this may seem fine. \
-      You read its description, it says it will do what you need so you give integrating it into your project a shot. It does not work. \
-      Read the source code...',
-    postBody: sourcePostBody
+    postDate: '4.30.2016',
+    postTags: 'AngularJS | Validation | Javascript',
+    postSnippet: 'The most common way to validate form fields in angular is to look at <code>$valid</code> and <code>$invalid</code> \
+      on the fields. But what if that is not enough and you want to create special validation for your fields (i.e. validating an email \
+      against a regex or make a call to the server to validate a value)? <code>NgModelController</code> has collection of validators called \
+      <code>$validators</code> and <code>$asyncValidators</code> that can be used to create your custom field validations...',
+    postBody: validatorsPostBody
   }
 ];
 
@@ -67,7 +67,7 @@ class Post extends Component {
       return post.id === props.match.params.id; //eslint-disable-line react/prop-types
     });
 
-    this.postColumnClasses = 'col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-1';
+    this.postColumnClasses = 'col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1';
     this.state = {
       post: postObj || {},
       postBodyClasses: ('post-body ' + this.postColumnClasses)
@@ -85,7 +85,6 @@ class Post extends Component {
   }
 
   createPostBody(text) { //eslint-disable-line class-methods-use-this
-    console.log(text());
     return {
       __html: text()
     };

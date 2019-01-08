@@ -6,7 +6,6 @@ import { ActionCreators } from './actions';
 
 import Home from './components/home/Home';
 import Nav from './components/nav/Nav';
-import PageHeader from './components/pageHeader/PageHeader';
 import Post from './components/post/Post';
 import Why from './components/why/Why';
 import Contributors from './components/contributors/Contributors';

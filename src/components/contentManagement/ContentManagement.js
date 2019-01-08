@@ -14,7 +14,7 @@ export default class ContentManagement extends Component {
       posts: [
         {
           id: '009wer9wer8akscvt',
-          postStatus: "published",
+          postStatus: 'published',
           postTitle: 'Read the source code',
           postAuthor: 'Yakira Bristol',
           postDate: '4.11.2017',
@@ -26,7 +26,7 @@ export default class ContentManagement extends Component {
         },
         {
           id: '009wer9wer8akjhssd',
-          postStatus: "published",
+          postStatus: 'published',
           postTitle: 'In too deep? - Deep copying objects in Angular',
           postAuthor: 'Yakira Bristol',
           postDate: '6.4.2016',
@@ -38,7 +38,7 @@ export default class ContentManagement extends Component {
         },
         {
           id: '009wer9wer8akjhsdf',
-          postStatus: "published",
+          postStatus: 'published',
           postTitle: 'Using BindToController - Why is this so damn useful?',
           postAuthor: 'Josh Gonzalez',
           postDate: '5.20.2016',
@@ -50,7 +50,7 @@ export default class ContentManagement extends Component {
         },
         {
           id: '009wer9wer8akjhsda',
-          postStatus: "published",
+          postStatus: 'published',
           postTitle: 'Using NgModelController $validators and $asyncValidators to validate form fields',
           postAuthor: 'Yakira Bristol',
           postDate: '4.30.2016',
@@ -111,6 +111,11 @@ export default class ContentManagement extends Component {
   render() {
     return (
       <div className='content-management-container container-fluid'>
+        <div className="row">
+          <div className={this.state.bodyClasses}>
+            <button className='btn btn-light' type='button' onClick={() => { this.editPost(); }}>&#43; New Post</button>
+          </div>
+        </div>
         {this.state.posts.map((post) => {
           /* eslint-disable jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events */
           const publishStatusText = (post.postStatus === 'published' ? 'Unpublish' : 'Publish') + ' Post';

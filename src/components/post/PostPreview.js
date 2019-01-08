@@ -18,7 +18,7 @@ class PostPreview extends Component {
     this.createPostPreview = this.createPostPreview.bind(this);
   }
 
-  createPostPreview(text) {
+  createPostPreview(text) { //eslint-disable-line class-methods-use-this
     return {
       __html: text
     };

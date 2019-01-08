@@ -1,6 +1,6 @@
 import React from 'react';
 
-module.exports = function(props) {
+module.exports = function () {
   return (
     <div>
       <p>
@@ -15,8 +15,8 @@ module.exports = function(props) {
       <blockquote>
         <a rel="_blank" href="https://docs.angularjs.org/api/ng/service/$compile">BindToController</a> - This property is used to bind scope properties
         directly to the Controller. It can be either true or an object hash with the same format as the scope property. Additionally,
-        a controller alias must be set, either by using controllerAs: 'myAlias' or by specifying the alias in the controller definition:
-        controller: 'myCtrl as myAlias'.
+        a controller alias must be set, either by using controllerAs: &apos;myAlias&apos; or by specifying the alias in the controller definition:
+        controller: &apos;myCtrl as myAlias&apos;.
       </blockquote>
       <p>
         Ok, so what exactly does this mean? This means that we can remove the passing and binding of <code>$scope </code>
@@ -25,9 +25,9 @@ module.exports = function(props) {
       <hr />
       <h3>The Messy Way</h3>
       <p>
-        Below is an example of this <em>(working example can be found here -> <a rel="_blank" href="http://codepen.io/refinedjs/pen/dMBLqb/?editors=1011">Code Pen</a>)</em>.
+        Below is an example of this <em>(working example can be found here -&gt; <a rel="_blank" href="http://codepen.io/refinedjs/pen/dMBLqb/?editors=1011">Code Pen</a>)</em>.
       </p>
-      <code data-gist-id="1fb1731c3c9f362d63c1049127210f44" data-gist-show-spinner="true"></code>
+      <code data-gist-id="1fb1731c3c9f362d63c1049127210f44" data-gist-show-spinner="true" />
       <hr />
       <h3>The Refined Way</h3>
       <p>
@@ -42,9 +42,9 @@ module.exports = function(props) {
         <code> BindToController</code> will override the components <code>$scope</code>.
       </p>
       <p>
-        Below you can see this in action <em>(working example can be found here -> <a rel="_blank" href="http://codepen.io/refinedjs/pen/ONeYJm?editors=1011">Code Pen</a>)</em>.
+        Below you can see this in action <em>(working example can be found here -&gt; <a rel="_blank" href="http://codepen.io/refinedjs/pen/ONeYJm?editors=1011">Code Pen</a>)</em>.
       </p>
-      <code data-gist-id="46a1eefa119c2d550b1c5413f8a2646b" data-gist-show-spinner="true"></code>
+      <code data-gist-id="46a1eefa119c2d550b1c5413f8a2646b" data-gist-show-spinner="true" />
       <p>
         As you can see from the code example above that <code>BindToController</code> makes it easier and more elegant option
         when using Controllers in Directives/Components. This is a fairly basic example; however, it gives good insight into the property as a whole.

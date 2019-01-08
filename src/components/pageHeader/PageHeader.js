@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import './pageheader.scss'; 
+import './pageheader.scss';
 
 export default class PageHeader extends Component {
   constructor(props) {

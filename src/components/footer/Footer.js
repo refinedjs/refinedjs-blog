@@ -43,7 +43,7 @@ export default class Footer extends Component {
                       </span>
                     </a>
                   </li>
-                </ul>     
+                </ul>
                 <p className='copyright text-muted'>Refined Js 2018</p>
               </div>
             </div>

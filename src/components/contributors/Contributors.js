@@ -49,7 +49,7 @@ export default class Contributors extends Component {
                 return (
                   <div key={ckey} className='contributor col-sm-6 col-md-6'>
                     <div className='thumbnail'>
-                      <img src={contributor.img} />
+                      <img src={contributor.img} alt={contributor.name} />
                       <div className='caption'>
                         <h3>{contributor.name}</h3>
                         <p className='context'>{contributor.description}</p>

@@ -19,6 +19,11 @@
         .DayPickerKeyboardShortcuts_show__bottomRight::before {
           border-right: 33px solid #41b7d8;
         }
+
+        .SingleDatePickerInput_clearDate__default {
+          background: transparent;
+          border-radius: 0px;
+        }
       }
 
       .save-post-container {

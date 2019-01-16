@@ -14,7 +14,7 @@ class PostsService {
     const { res } = args[0];
     const { req } = args[1];
     return new Promise((resolve, reject) => {
-      this.Model.find().then((result) => {
+      this.Model.find().sort({ postDate: 1 }).then((result) => {
         //console.log('The results: ', result);
         const posts = {
           posts: result

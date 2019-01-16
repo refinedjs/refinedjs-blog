@@ -12,6 +12,7 @@ import Contributors from './components/contributors/Contributors';
 import Footer from './components/footer/Footer';
 
 import ContentManagement from './components/contentManagement/ContentManagement';
+import PostEditor from './components/contentManagement/postEditor/PostEditor';
 
 import './assets/app.scss';
 
@@ -34,6 +35,7 @@ class App extends Component {
             <Route path="/why" component={Why} />
             <Route path="/contributors" component={Contributors} />
             <Route exact path="/admin" component={ContentManagement} />
+            <Route exact path="/admin/post/:id/edit" component={PostEditor} />
           </Switch>
         </Router>
         <Footer />

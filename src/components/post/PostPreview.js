@@ -29,7 +29,7 @@ class PostPreview extends Component {
       <div className='row'>
         <div className={this.state.postPreviewClasses}>
           <div className='post-preview'>
-            <a href='' onClick={() => { this.props.onTitleClicked(this.state.post); }}><h2>{this.state.post.postTitle}</h2></a>
+            <a href='' onClick={() => { this.props.onPostClicked(this.state.post); }}><h2>{this.state.post.postTitle}</h2></a>
             <p className='post-meta'>By <a href='' onClick={this.props.onAuthorClicked}>{this.state.post.postAuthor}</a> || {this.state.post.postDate}</p>
             <hr />
             <h3 className='post-subtitle' dangerouslySetInnerHTML={this.createPostPreview(this.state.post.postSnippet)} />
@@ -38,7 +38,7 @@ class PostPreview extends Component {
             </p>
             <p className='post-meta-details'>
               {/*<i className='fa fa-comments' /> | <a href='http://refinedjs.io/posts/4-11-2017/read-the-source-code#disqus_thread'>Comments</a>*/}
-              <a href=''><span>Read more...</span></a>
+              <a href='' onClick={() => { this.props.onPostClicked(this.state.post); }}><span>Read more...</span></a>
             </p>
           </div>
         </div>
@@ -49,7 +49,7 @@ class PostPreview extends Component {
 
 PostPreview.propTypes = {
   post: PropTypes.shape({}).isRequired,
-  onTitleClicked: PropTypes.func.isRequired,
+  onPostClicked: PropTypes.func.isRequired,
   onAuthorClicked: PropTypes.func.isRequired
 };
 

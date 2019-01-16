@@ -15,12 +15,11 @@ const persistedState = loadState();
 const store = getStore(persistedState);
 
 store.subscribe(throttle(() => {
-  saveState(store.getState());
+  //saveState(store.getState());
   //May not want to save the full state here
-  /*saveState({
-    auth: store.getState().auth,
-    ...
-  })*/
+  saveState({
+    posts: store.getState().posts
+  });
 }, 1000));
 
 const rootEl = document.getElementById('root');

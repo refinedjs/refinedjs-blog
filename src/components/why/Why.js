@@ -14,6 +14,7 @@ export default class Why extends Component {
   }
 
   render() {
+    console.log('Why');
     return (
       <div className='why-container'>
         <PageHeader heading='Why???' subHeading='Why Create Refined JS?' />

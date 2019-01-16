@@ -12,33 +12,33 @@ class API {
     };
   }
 
-  static setBaseHost(config) {
-    return this.host || config.host || config[process.env.NODE_ENV];
+  static setBaseHost(requestConfig) {
+    this.host = requestConfig.host || config[process.env.NODE_ENV] || this.host;
   }
 
-  static get(config) {
-    API.setBaseHost(config);
-    return this.api('get', config.route, config.headers, config.params);
+  static get(requestConfig) {
+    API.setBaseHost(requestConfig);
+    return this.api('get', requestConfig.route, requestConfig.headers, requestConfig.params);
   }
 
-  static put(config) {
-    API.setBaseHost(config);
-    return this.api('put', config.route, config.headers, config.params, config.data);
+  static put(requestConfig) {
+    API.setBaseHost(requestConfig);
+    return this.api('put', requestConfig.route, requestConfig.headers, requestConfig.params, requestConfig.data);
   }
 
-  static post(config) {
-    API.setBaseHost(config);
-    return this.api('post', config.route, config.headers, config.params, config.data);
+  static post(requestConfig) {
+    API.setBaseHost(requestConfig);
+    return this.api('post', requestConfig.route, requestConfig.headers, requestConfig.params, requestConfig.data);
   }
 
-  static patch(config) {
-    API.setBaseHost(config);
-    return this.api('patch', config.route, config.headers, config.params, config.data);
+  static patch(requestConfig) {
+    API.setBaseHost(requestConfig);
+    return this.api('patch', requestConfig.route, requestConfig.headers, requestConfig.params, requestConfig.data);
   }
 
-  static delete(config) {
-    API.setBaseHost(config);
-    return this.api('delete', config.route, config.headers, config.params);
+  static delete(requestConfig) {
+    API.setBaseHost(requestConfig);
+    return this.api('delete', requestConfig.route, requestConfig.headers, requestConfig.params);
   }
 
   static api(requestType, route, headers, params, data) {

@@ -20,12 +20,13 @@ export default class PostModal extends Component {
 
     this.state = {
       post: modalPost,
-      postDate: modalPost.postDate ? moment(modalPost.postDate) : null,
+      postDate: modalPost.postDate ? moment(modalPost.postDate, 'M.D.YYYY') : null,
       dateFocused: false,
       authorOptions: ['Yakira Bristol', 'Josh Gonzalez'],
       statusOptions: ['draft', 'published']
     };
 
+    this.updatePostField = this.updatePostField.bind(this);    
     this.updateDate = this.updateDate.bind(this);
     this.updateFocus = this.updateFocus.bind(this);
     this.savePost = this.savePost.bind(this);
@@ -33,12 +34,14 @@ export default class PostModal extends Component {
 
   componentWillReceiveProps(nextProps) {
     const post = nextProps.post ? Object.assign({}, nextProps.post) : PostModal.defaultProps.post;
-    this.setState({ post });
+    const postDate = nextProps.post.postDate ? moment(nextProps.post.postDate, 'M.D.YYYY') : null;
+    this.setState({ post, postDate });
   }
 
-  updatePostField(value, fieldType) {
+  updatePostField(e) {
     const { post } = this.state;
-    post[fieldType] = value;
+    const fieldType = e.target.name;
+    post[fieldType] = e.target.value;
 
     this.setState({ post });
   }
@@ -55,6 +58,9 @@ export default class PostModal extends Component {
     const { post } = this.state;
     post.postDate = this.state.postDate.format('M.D.YYYY');
 
+    const formattedTags = post.split(',').map((tag) => { return tag.trim(); }).join(', ');
+    post.postTags = formattedTags;
+
     this.props.savePost(post);
 
     this.props.toggleModal();
@@ -67,11 +73,11 @@ export default class PostModal extends Component {
           <ModalBodyComponent closeModal={this.props.toggleModal}>
             <div className="post-item">
               <span>Title</span>
-              <input className="form-control" type="text" value={this.state.post.postTitle} onChange={(e) => { this.updatePostField(e.target.value, 'postTitle'); }} />
+              <input className="form-control" type="text" name="postTitle" value={this.state.post.postTitle} onChange={this.updatePostField} />
             </div>
             <div className="post-item">
               <span>Author</span>
-              <select className="form-control" value={this.state.post.postAuthor} onChange={(e) => { this.updatePostField(e.target.value, 'postAuthor'); }}>
+              <select className="form-control" name="postAuthor" value={this.state.post.postAuthor} onChange={this.updatePostField}>
                 {this.state.authorOptions.map((author) => {
                   return (
                     <option key={author} value={author}>{author}</option>
@@ -93,23 +99,24 @@ export default class PostModal extends Component {
                 showClearDate
                 showDefaultInputIcon
                 isOutsideRange={() => { return false; }}
+                displayFormat="M.D.YYYY"
               />
             </div>
             <div className="post-item">
               <span>Tags (separated by commas)</span>
-              <input type="text" className="form-control" value={this.state.post.postTags} onChange={(e) => { this.updatePostField(e.target.value, 'postTags'); }} />
+              <input type="text" className="form-control" name="postTags" value={this.state.post.postTags} onChange={this.updatePostField} />
             </div>
             <div className="post-item">
               <span>Post Snippet</span>
-              <textarea type="text" className="form-control" rows="5" value={this.state.post.postSnippet} onChange={(e) => { this.updatePostField(e.target.value, 'postSnippet'); }} />
+              <textarea type="text" className="form-control" name="postSnippet" rows="5" value={this.state.post.postSnippet} onChange={this.updatePostField} />
             </div>
             <div className="post-item">
               <span>Post Body</span>
-              <textarea type="text" className="form-control" rows="5" value={this.state.post.postBody} onChange={(e) => { this.updatePostField(e.target.value, 'postBody'); }} />
+              <textarea type="text" className="form-control" name="postBody" rows="5" value={this.state.post.postBody} onChange={this.updatePostField} />
             </div>
             <div className="post-item">
               <span>Status</span>
-              <select className="form-control" value={this.state.post.postStatus} onChange={(e) => { this.updatePostField(e.target.value, 'postStatus'); }}>
+              <select className="form-control" name="postStatus" value={this.state.post.postStatus} onChange={this.updatePostField}>
                 {this.state.statusOptions.map((status) => {
                   return (
                     <option key={status} value={status}>{status}</option>
@@ -118,7 +125,7 @@ export default class PostModal extends Component {
               </select>
             </div>
             <div className="save-post-container">
-              <button className='btn btn-light'>Save Post</button>
+              <button className='btn btn-light' onClick={this.savePost}>Save Post</button>
               <button className='btn btn-light' onClick={this.props.toggleModal}>Cancel</button>
             </div>
           </ModalBodyComponent>

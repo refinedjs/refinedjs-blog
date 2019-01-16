@@ -43,6 +43,8 @@
     "debounce": "^1.0.2",
     "dotenv": "^6.1.0",
     "dotenv-webpack": "^1.5.4",
+    "draft-js": "^0.10.5",
+    "draft-js-export-html": "^1.2.0",
     "es6-promise": "^4.1.1",
     "express": "^4.15.4",
     "glob": "^7.1.2",

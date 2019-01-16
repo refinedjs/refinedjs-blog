@@ -1,7 +1,7 @@
 version: '2.2'
 services: 
   refinedjs:
-    build: .
+    build:
       context: .
       dockerfile: Dockerfile
       network: host
@@ -10,6 +10,8 @@ services:
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
+    links:
+      - "database"
   database:
     hostname: mongo
     image: mongo:latest

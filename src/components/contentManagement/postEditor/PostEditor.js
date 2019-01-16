@@ -4,20 +4,20 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
-import { ActionCreators } from '../../../actions';
-
-import PostAPI from '../../../../framework/api';
+import { SingleDatePicker } from 'react-dates';
+import { EditorState, ContentState, RichUtils, convertFromHTML } from 'draft-js';
+import { stateToHTML } from 'draft-js-export-html';
 
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 
-import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
-import { Editor, EditorState, ContentState, RichUtils, convertFromHTML } from 'draft-js';
-import { stateToHTML } from 'draft-js-export-html';
+import 'draft-js/dist/Draft.css';
 
+import { ActionCreators } from '../../../actions';
 import TextEditor from './textEditor/TextEditor';
 
-import 'draft-js/dist/Draft.css';
+import PostAPI from '../../../../framework/api';
+
 import './postEditor.scss';
 
 class PostEditor extends Component {
@@ -37,7 +37,7 @@ class PostEditor extends Component {
       bodyEditorState: EditorState.createEmpty()
     };
 
-    this.setDomEditorRef = ref => this.domEditor = ref;
+    this.setDomEditorRef = this.setDomEditorRef.bind(this);
 
     this.updatePostField = this.updatePostField.bind(this);
     this.updateDate = this.updateDate.bind(this);
@@ -49,10 +49,8 @@ class PostEditor extends Component {
 
   componentDidMount() {
     const newState = Object.assign({}, this.state);
-    console.log('The post', newState.post);
     if(newState.post.postSnippet !== '') {
       const convertedSnippet = convertFromHTML(newState.post.postSnippet);
-      console.log('The converted snippet: ', convertedSnippet);
       const contentState = ContentState.createFromBlockArray(convertedSnippet.contentBlocks, convertedSnippet.entityMap);
       newState.snippetEditorState = EditorState.createWithContent(contentState);
     }
@@ -68,10 +66,18 @@ class PostEditor extends Component {
 
   componentWillReceiveProps(nextProps) {
     const post = nextProps.location.state && nextProps.location.state.post ?
-      Object.assign({}, nextProps.location.state.post) : 
+      Object.assign({}, nextProps.location.state.post) :
       PostEditor.defaultProps.post;
     const postDate = post.postDate ? moment(post.postDate, 'M.D.YYYY') : null;
     this.setState({ post, postDate });
+  }
+
+  onEditorChange(editorState, editorType) {
+    this.setState({ [editorType]: editorState });
+  }
+
+  setDomEditorRef(ref) {
+    this.domEditor = ref;
   }
 
   updatePostField(e) {
@@ -90,13 +96,9 @@ class PostEditor extends Component {
     this.setState({ dateFocused: value.focused });
   }
 
-  onEditorChange(editorState, editorType) {
-    this.setState({ [editorType]: editorState });
-  }
-
   handleEditorKeyCommand(command, editorState, editorType) {
     const newState = RichUtils.handleKeyCommand(editorState, command);
-    if (newState) {
+    if(newState) {
       this.onEditorChange(newState, editorType);
       return 'handled';
     }
@@ -106,6 +108,7 @@ class PostEditor extends Component {
   savePost() { //eslint-disable-line class-methods-use-this
     const { post, snippetEditorState, bodyEditorState } = this.state;
     const saveType = post.id ? 'put' : 'post';
+    const url = post.id ? '/api/posts/' + post.id : '/api/posts';
     const formattedTags = post.postTags.split(',').map((tag) => { return tag.trim(); }).join(', ');
 
     if(post.postAuthor == '') {
@@ -124,12 +127,10 @@ class PostEditor extends Component {
       post.id = '009wer9wer8akjhsd' + this.props.posts.blogPosts.length;
     }
 
-    this.props.savePost(post);
+    const savePostConfig = { route: url, params: null, headers: null, data: post };
 
-    const savePostConfig = { route: '/api/posts', params: null, headers: null, data: post };
-    console.log(saveType, savePostConfig);
-    
     PostAPI[saveType](savePostConfig).then((response) => {
+      this.props.savePost(post);
       this.props.history.goBack();
     }).catch((err) => {
       console.log('Error saving post: ', post, err);
@@ -181,11 +182,21 @@ class PostEditor extends Component {
             </div>
             <div className="post-item">
               <div className="field-title">Post Snippet</div>
-              <TextEditor editorName='snippetEditorState' onEditorChange={this.onEditorChange} placeholder='Enter a post snippet' />
+              <TextEditor
+                editorName='snippetEditorState'
+                editorState={this.state.snippetEditorState}
+                onEditorChange={this.onEditorChange}
+                placeholder='Enter a post snippet'
+              />
             </div>
             <div className="post-item">
               <div className="field-title">Post Body</div>
-              <TextEditor editorName='bodyEditorState' onEditorChange={this.onEditorChange} placeholder='Say something' />
+              <TextEditor
+                editorName='bodyEditorState'
+                editorState={this.state.bodyEditorState}
+                onEditorChange={this.onEditorChange}
+                placeholder='Say something'
+              />
             </div>
             <div className="post-item">
               <div className="field-title">Status</div>

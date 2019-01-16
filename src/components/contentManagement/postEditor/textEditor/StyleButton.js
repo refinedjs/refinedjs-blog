@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 export default class StyleButton extends Component {
   constructor(props) {
     super(props);
-    
+
     this.onToggle = this.onToggle.bind(this);
   }
 
@@ -15,7 +15,7 @@ export default class StyleButton extends Component {
 
   render() {
     let className = 'controls-style-button';
-    if (this.props.active) {
+    if(this.props.active) {
       className += ' controls-active-button';
     }
 

@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { Editor, EditorState, RichUtils, getDefaultKeyBinding } from 'draft-js';
+import 'draft-js/dist/Draft.css';
+
 import BlockStyleControls from './BlockStyleControls';
 import InlineStyleControls from './InlineStyleControls';
 
-import { Editor, EditorState, RichUtils, convertFromHTML, convertToRaw, getDefaultKeyBinding } from 'draft-js';
-import { stateToHTML } from 'draft-js-export-html';
-
-import 'draft-js/dist/Draft.css';
 import './textEditor.scss';
 
 // Custom overrides for "code" style.
@@ -25,8 +24,7 @@ export default class TextEditor extends Component {
     super(props);
 
     this.state = {
-      editorState: props.editorContent || EditorState.createEmpty(),
-      editorContent: props.editorContent ? props.editorContent : TextEditor.defaultProps.editorContent
+      editorState: props.editorState || EditorState.createEmpty()
     };
 
     this.onEditorChange = this.onEditorChange.bind(this);
@@ -37,6 +35,7 @@ export default class TextEditor extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    this.setState({ editorState: nextProps.editorState });
   }
 
   onEditorChange(editorState) {
@@ -45,23 +44,29 @@ export default class TextEditor extends Component {
     this.props.onEditorChange(editorState, this.props.editorName);
   }
 
-  handleEditorKeyCommand(command, editorState) {
-    const newState = RichUtils.handleKeyCommand(editorState, command);
-    if (newState) {
-      this.onEditorChange(newState);
-      return 'handled';
+  toggleBlockType(blockType) {
+    this.onEditorChange(RichUtils.toggleBlockType(this.state.editorState, blockType));
+  }
+
+  toggleInlineStyle(inlineStyle) {
+    this.onEditorChange(RichUtils.toggleInlineStyle(this.state.editorState, inlineStyle));
+  }
+
+  getBlockStyle(block) { //eslint-disable-line class-methods-use-this
+    switch (block.getType()) {
+      case 'blockquote': return 'text-editor-blockquote';
+      default: return null;
     }
-    return 'not-handled';
   }
 
   mapKeyToEditorCommand(e) {
-    if (e.keyCode === 9 /* TAB */) {
+    if(e.keyCode === 9 /* TAB */) {
       const newEditorState = RichUtils.onTab(
         e,
         this.state.editorState,
         4, /* maxDepth */
       );
-      if (newEditorState !== this.state.editorState) {
+      if(newEditorState !== this.state.editorState) {
         this.onEditorChange(newEditorState);
       }
       return;
@@ -69,29 +74,13 @@ export default class TextEditor extends Component {
     return getDefaultKeyBinding(e);
   }
 
-  toggleBlockType(blockType) {
-    this.onEditorChange(
-      RichUtils.toggleBlockType(
-        this.state.editorState,
-        blockType
-      )
-    );
-  }
-
-  toggleInlineStyle(inlineStyle) {
-    this.onEditorChange(
-      RichUtils.toggleInlineStyle(
-        this.state.editorState,
-        inlineStyle
-      )
-    );
-  }
-
-  getBlockStyle(block) {
-    switch (block.getType()) {
-      case 'blockquote': return 'text-editor-blockquote';
-      default: return null;
+  handleEditorKeyCommand(command, editorState) {
+    const newState = RichUtils.handleKeyCommand(editorState, command);
+    if(newState) {
+      this.onEditorChange(newState);
+      return 'handled';
     }
+    return 'not-handled';
   }
 
   render() {
@@ -104,7 +93,7 @@ export default class TextEditor extends Component {
     }
 
     return (
-     <div className={classes}>
+      <div className={classes}>
         <BlockStyleControls editorState={this.state.editorState} onToggle={this.toggleBlockType} />
         <InlineStyleControls editorState={this.state.editorState} onToggle={this.toggleInlineStyle} />
         <Editor
@@ -126,10 +115,10 @@ TextEditor.propTypes = {
   editorName: PropTypes.string.isRequired,
   onEditorChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
-  editorContent: PropTypes.string
+  editorState: PropTypes.shape({})
 };
 
 TextEditor.defaultProps = {
   placeholder: '',
-  editorContent: ''
+  editorState: EditorState.createEmpty()
 };

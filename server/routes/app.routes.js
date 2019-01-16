@@ -6,10 +6,9 @@
 
   function setAppRoutes(app)
   {
-    app.route('/').get(function response(req, res) {  
-      res.sendFile(path.join(__dirname, '../public/index.html'));
+    app.route('*').get(function response(req, res) {
+      res.sendFile(path.join(__dirname, '../../public/index.html'));
     });
-
   }
 
   module.exports = setAppRoutes;

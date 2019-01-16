@@ -2,24 +2,13 @@ FROM node:8
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
-COPY ecosystem.config.js ./
-
-RUN curl -o- -L https://yarnpkg.com/install.sh | bash
-
-RUN npm install pm2 -g
-
-RUN yarn install
+RUN apt-get update && apt-get install -y vim \
+  && curl -o- -L https://yarnpkg.com/install.sh | bash \
+  && npm install pm2 -g
 
 #Copy all files into the working dir
-COPY . .
+COPY . ./
 
-#Add the .env file so this builds correctly
-ADD .env.example ./.env
+EXPOSE 3030
 
-EXPOSE 3000
-
-RUN yarn build
-
-#CMD ["yarn", "start"]
-CMD ["pm2-docker", "ecosystem.config.js"]
+CMD ["/usr/src/app/deploy-app.sh"]

@@ -1,0 +1,27 @@
+.contributors-container {
+  .intro-header {
+    .container-fluid {
+      .row {
+        .site-heading {
+          font-size: 44px;
+        }
+      }
+    }
+  }
+  .container {
+    .row {
+      .contributor {
+        .thumbnail {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          img {
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,9 +1,19 @@
-version: '3'
+version: '2.2'
 services: 
   refinedjs:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+      network: host
     ports:
       - "3000:3000"
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
+    links:
+      - "database"
+  database:
+    hostname: mongo
+    image: mongo:latest
+    ports:
+      - "27017:27017"

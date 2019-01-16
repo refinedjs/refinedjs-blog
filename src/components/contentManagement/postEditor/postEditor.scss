@@ -1,0 +1,33 @@
+.post-container {
+  .post-item {
+    margin: 20px 0px;
+
+    .field-title {
+      margin-bottom: 10px;
+    }
+
+    .DateInput_input__focused {
+      border-bottom: 2px solid #41b7d8;
+    }
+
+    .DayPickerKeyboardShortcuts_show__bottomRight::before {
+      border-right: 33px solid #41b7d8;
+    }
+
+    .SingleDatePickerInput_clearDate__default {
+      background: transparent;
+      border-radius: 0px;
+    }
+
+    .SingleDatePicker_picker {
+      z-index: 999;
+    }
+  }
+
+  .save-post-container {
+    margin-top: 45px;
+    button {
+      margin-right: 10px;
+    }
+  }
+}
